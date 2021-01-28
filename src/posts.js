@@ -11,8 +11,10 @@ import {
     ReferenceInput,
     TextInput,
     SelectInput,
+    SimpleList,
     Filter,
 } from 'react-admin'
+import { useMediaQuery } from '@material-ui/core';
 
 export const PostCreate = props => (
     <Create {...props}>
@@ -50,15 +52,25 @@ const PostFilter = (props) => (
         </ReferenceInput>
     </Filter>
 );
-export const PostList = props => (
-    <List filters={<PostFilter />} {...props}>
-        <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <ReferenceField source="userId" reference="users">
-                <TextField source="name" />
-            </ReferenceField>
-            <TextField source="title" />
-            <EditButton />
-        </Datagrid>
-    </List>
-);
+export const PostList = (props) => {
+    const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
+    return (
+        <List filters={<PostFilter />} {...props}> 
+            {isSmall ? (
+                <SimpleList
+                    primaryText={record => record.title}
+                />
+            ) : ( 
+        
+            <Datagrid rowClick="edit">
+                <TextField source="id" />
+                <ReferenceField source="userId" reference="users">
+                    <TextField source="name" />
+                </ReferenceField>
+                <TextField source="title" />
+                <EditButton />
+            </Datagrid>
+            )}
+        </List>
+    );
+};
