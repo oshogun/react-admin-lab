@@ -15,7 +15,6 @@ import {
     UrlField,
     EditButton
 } from 'react-admin';
-import MyUrlField from './MyUrlField';
 import { useMediaQuery } from '@material-ui/core';
 
 export const UserShow = props => (
@@ -82,7 +81,7 @@ export const UserList = props => {
                     <TextField source="name" label="Nome"/>
                     <EmailField source="email"  />
                     <TextField source="phone" label="Telefone"/>
-                    <MyUrlField source="website" />
+                    <UrlField source="website" />
                     <EditButton/>
                 </Datagrid>
              )
