@@ -9,6 +9,7 @@ import {
     BooleanField,
     TextField,
     SimpleForm,
+    SimpleList,
     SelectInput,
     ReferenceInput,
     TextInput,
@@ -16,6 +17,8 @@ import {
     SimpleShowLayout,
     Filter
 } from 'react-admin';
+
+import { useMediaQuery } from '@material-ui/core';
 
 const TaskTitle = ({ record}) => {
     return <span>Tarefa: {record ? `"${record.title}"` : ''} </span>
@@ -61,17 +64,27 @@ const TodoFilter = (props) => (
     </Filter>
 );
 
-export const TodoList = props => (
-    <List filters={<TodoFilter/>}{...props}>
-        <Datagrid rowClick="show">
+export const TodoList = props => {
+    const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
+    return (
+        <List filters={<TodoFilter/>}{...props}> 
+        { isSmall ? (
+            <SimpleList linkType="show"
+                primaryText={record => record.title} 
+            />
+        ) : (
+            <Datagrid rowClick="show">
             <ReferenceField source="userId" reference="users">
                 <TextField source="name" label="Funcionário" />
             </ReferenceField>
             <TextField source="title" label="Tarefa"/>
             <BooleanField source="completed" label="Concluída" />
         </Datagrid>
-    </List>
-);
+        )}  
+        </List>
+    );
+    
+};
 
 export const TodoShow = props => (
     <Show {...props}>
