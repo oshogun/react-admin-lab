@@ -12,15 +12,15 @@ import {
     SimpleShowLayout,
     TextInput,
     Filter,
-    UrlField
+    UrlField,
+    EditButton
 } from 'react-admin';
 import MyUrlField from './MyUrlField';
 import { useMediaQuery } from '@material-ui/core';
 
 export const UserShow = props => (
-    <Show {...props}>
+    <Show title="Visualizar funcionário" {...props}>
         <SimpleShowLayout>
-            <TextField source="id" />
             <TextField source="name" label="Nome"/>
             <TextField source="username" label="Nome de Usuário" />
             <EmailField source="email" />
@@ -78,11 +78,12 @@ export const UserList = props => {
                     primaryText={record => record.name} 
                 />
              ) : (
-                <Datagrid rowClick="edit">
+                <Datagrid rowClick="show">
                     <TextField source="name" label="Nome"/>
                     <EmailField source="email"  />
                     <TextField source="phone" label="Telefone"/>
                     <MyUrlField source="website" />
+                    <EditButton/>
                 </Datagrid>
              )
             }

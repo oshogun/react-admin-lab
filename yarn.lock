@@ -9365,6 +9365,11 @@ ra-language-english@^3.11.4:
   dependencies:
     ra-core "^3.11.4"
 
+ra-language-portuguese@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/ra-language-portuguese/-/ra-language-portuguese-1.6.0.tgz#a78ae213133c21ea16c2323d390eb51472984f38"
+  integrity sha512-9PAxgrisjmDOTRefjCe2y2ruYQw/iqXnXgUt09vOYUcjY4J0ctabJ4+joGI0jV/x9icF9c7Pui2USc5QDRTktQ==
+
 ra-ui-materialui@^3.11.4:
   version "3.11.4"
   resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.11.4.tgz#c28181aa490bdc87a19dfe32af450d48e7bf9760"
