@@ -70,14 +70,17 @@ export const UserEdit = props => (
 
 
 export const UserList = props => {
+    // Query for screen size
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
     return (
-        <List filters={<UserFilter />} {...props}>
+        <List title={"Listar funcionários"} filters={<UserFilter />} {...props}>
             {isSmall ? (
+                // Mobile friendly UI
                 <SimpleList linkType="show"
                     primaryText={record => record.name} 
                 />
              ) : (
+                // Detailed UI
                 <Datagrid rowClick="show">
                     <TextField source="name" label="Nome"/>
                     <CustomEmailField source="email"  />

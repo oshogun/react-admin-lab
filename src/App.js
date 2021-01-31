@@ -28,6 +28,11 @@ const theme = createMuiTheme({
               color: 'white'
           }
       },
+      RaReferenceField: {
+            link: {
+                color: 'cyan'
+            }
+      }
   }
 });
 
