@@ -14,7 +14,7 @@ const styles = {
 };
 
 const CustomEmailField = ({record = {}, source}) =>
-    <a href={'mailto' + record[source]} style={styles}>
+    <a href={'mailto:' + record[source]} style={styles}>
         {record[source]}
     </a>
 
