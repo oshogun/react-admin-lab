@@ -1,6 +1,12 @@
-// in src/App.js
+/**
+ * Author: Guilherme Cardoso
+ * E-mail: gchicoper@gmail.com
+ * Github: @oshogun 
+ */
+
+
 import * as React from "react";
-import { Admin, Resource, EditGuesser, ShowGuesser} from 'react-admin';
+import { Admin, Resource} from 'react-admin';
 import { UserList, UserEdit, UserCreate, UserShow } from './users';
 import jsonServerProvider from 'ra-data-json-server';
 import UserIcon from '@material-ui/icons/Group';
@@ -9,11 +15,31 @@ import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import portugueseMessages from 'ra-language-portuguese';
+import { createMuiTheme } from '@material-ui/core/styles';
 
+// Superior dark theme
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+  overrides: {
+      MuiButton: {
+          textPrimary : {
+              color: 'white'
+          }
+      },
+  }
+});
+
+// Connect to backend API 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+
+// i18n support
 const i18nProvider = polyglotI18nProvider(() => portugueseMessages, 'pt');
+
+// Main app instantiation
 const App = () => (
-<Admin dashboard={Dashboard} authProvider={authProvider} 
+<Admin theme={theme} dashboard={Dashboard} authProvider={authProvider} 
     dataProvider={dataProvider}
     i18nProvider={i18nProvider}>
     <Resource name="users" 

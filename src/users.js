@@ -1,3 +1,9 @@
+/**
+ * Author: Guilherme Cardoso
+ * E-mail: gchicoper@gmail.com
+ * Github: @oshogun 
+ */
+
 import * as React from 'react';
 import {
     List,
@@ -12,10 +18,13 @@ import {
     SimpleShowLayout,
     TextInput,
     Filter,
-    UrlField,
     EditButton
 } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
+import CustomUrlField from './url-custom';
+import CustomEmailField from './email-custom';
+
+/////////////// Show, Create, Edit and List users////////////////////
 
 export const UserShow = props => (
     <Show title="Visualizar funcionário" {...props}>
@@ -59,14 +68,6 @@ export const UserEdit = props => (
     </Edit>
 );
 
-const UserFilter = (props) => (
-    <Filter {...props}>
-        <TextInput label="Busca" source="q" alwaysOn />
-        <TextInput label="E-Mail" source="email" />
-        <TextInput label="Telefone" source="phone" />
-        <UrlField label="Website" source="website" />
-    </Filter>
-);
 
 export const UserList = props => {
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
@@ -79,9 +80,9 @@ export const UserList = props => {
              ) : (
                 <Datagrid rowClick="show">
                     <TextField source="name" label="Nome"/>
-                    <EmailField source="email"  />
+                    <CustomEmailField source="email"  />
                     <TextField source="phone" label="Telefone"/>
-                    <UrlField source="website" />
+                    <CustomUrlField source="website"/>
                     <EditButton/>
                 </Datagrid>
              )
@@ -90,3 +91,12 @@ export const UserList = props => {
     );
 }
 
+// Filter/search
+const UserFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Busca" source="q" alwaysOn />
+        <TextInput label="E-Mail" source="email" />
+        <TextInput label="Telefone" source="phone" />
+        <TextInput label="Website" source="website"  />
+    </Filter>
+);

@@ -1,3 +1,9 @@
+/**
+ * Author: Guilherme Cardoso
+ * E-mail: gchicoper@gmail.com
+ * Github: @oshogun 
+ */
+
 import * as React from "react";
 import {
     Datagrid,
